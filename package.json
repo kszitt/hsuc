@@ -1,35 +1,24 @@
 {
-  "_from": "next-oss",
-  "_id": "next-oss@3.1.0",
-  "_inBundle": false,
-  "_integrity": "sha1-332jb5c8nr5SaoJmpnvAbfV35bU=",
-  "_location": "/next-oss",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "tag",
-    "registry": true,
-    "raw": "next-oss",
-    "name": "next-oss",
-    "escapedName": "next-oss",
-    "rawSpec": "",
-    "saveSpec": null,
-    "fetchSpec": "latest"
+  "name": "hsuc",
+  "version": "0.0.1",
+  "description": "webpack打包文件上传到云端，提高加载速度",
+  "main": "index.js",
+  "scripts": {},
+  "author": "kszitt",
+  "license": "ISC",
+  "homepage": "https://github.com/kszitt/hsuc",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kszitt/hsuc.git"
   },
-  "_requiredBy": [
-    "#DEV:/",
-    "#USER"
+  "keywords": [
+    "webpack",
+    "cloud",
+    "cdn",
+    "oss",
+    "obs"
   ],
-  "_resolved": "https://registry.npm.taobao.org/next-oss/download/next-oss-3.1.0.tgz",
-  "_shasum": "df7da36f973c9ebe526a8266a67bc06df577e5b5",
-  "_spec": "next-oss",
-  "_where": "D:\\items\\react-redux-antd",
-  "author": {
-    "name": "kszitt"
-  },
-  "bugs": {
-    "url": "https://github.com/kszitt/next-oss/issues"
-  },
-  "bundleDependencies": false,
+  "devDependencies": {},
   "dependencies": {
     "ali-oss": "^6.1.0",
     "bluebird": "^3.5.3",
@@ -37,27 +26,5 @@
     "node-cmd": "^3.0.0",
     "qiniu": "^7.3.0",
     "upyun": "^3.3.11"
-  },
-  "deprecated": false,
-  "description": "webpack打包文件上传到OSS",
-  "devDependencies": {},
-  "homepage": "https://github.com/kszitt/next-oss",
-  "keywords": [
-    "next",
-    "oss",
-    "OSS",
-    "cdn",
-    "CDN",
-    "webpack",
-    "build"
-  ],
-  "license": "ISC",
-  "main": "index.js",
-  "name": "next-oss",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kszitt/next-oss.git"
-  },
-  "scripts": {},
-  "version": "3.1.0"
+  }
 }
