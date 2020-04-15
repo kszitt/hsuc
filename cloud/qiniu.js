@@ -32,12 +32,13 @@ class QiniuCloud {
       let options = {
           scope: `${this.options.bucket}:${CDNPath}`,
         },
-        putPolicy = new qiniu.rs.PutPolicy(options);
+        putPolicy = new Qiniu.rs.PutPolicy(options);
       let result = await this.qiniuPutFile(
         putPolicy.uploadToken(this.qiniu.mac),
         CDNPath,
         path
       );
+      if(/png$/.test(CDNPath)) console.log(result);
       return result.statusCode === 200;
     } catch(err){
       throw err;
@@ -50,7 +51,7 @@ class QiniuCloud {
         token,
         path,
         localFile,
-        new qiniu.form_up.PutExtra(),
+        new Qiniu.form_up.PutExtra(),
         (err, respBody, respInfo) => {
           if(err){
             reject(err);

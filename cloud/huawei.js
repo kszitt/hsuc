@@ -14,14 +14,13 @@ class Huawei {
   async exist(path, CDNPath){
     try {
       let data = await this.promise("getObjectMetadata", {
-        Key: path,
+        Key: CDNPath,
       });
       if(data.InterfaceResult){
-        if(/png$/.test(CDNPath)) console.log(data);
         return true;
       }
+      return false;
     } catch(err) {
-      if(/png$/.test(CDNPath)) console.log("err", err);
       return false;
     }
   }
@@ -53,7 +52,7 @@ class Huawei {
 
   async getFilesByFolder(prefix){
     try {
-      let files = (await this.huaweiPromise("listObjects", {
+      let files = (await this.promise("listObjects", {
         Prefix : prefix
       })).InterfaceResult.Contents;
       files = files.map(item => {
@@ -68,7 +67,7 @@ class Huawei {
 
   async deleteFile(path){
     try {
-      let result = await this.huaweiPromise("deleteObject", {
+      let result = await this.promise("deleteObject", {
         Key: path
       });
       return result.CommonMsg.Status >= 200 && result.CommonMsg.Status < 300;

@@ -7,6 +7,10 @@ class Cloud {
     try {
       for(let key in options){
         switch(key){
+          case "custom":
+            const Custom = options[key];
+            this.CDN = new Custom(options);
+            break;
           case "huawei":
             const Huawei = require("../cloud/huawei");
             this.CDN = new Huawei(options[key]);
@@ -33,7 +37,9 @@ class Cloud {
 
   // 上传文件
   async uploadFile(path, CDNPath, cover){
-    if(!cover && await this.CDN.exist(path, CDNPath)) return "exist";
+    if((typeof cover === "boolean" ? cover : cover.test(CDNPath)) && await this.CDN.exist(path, CDNPath)) {
+      return "exist";
+    }
     return await this.CDN.upload(path, CDNPath);
   }
 
