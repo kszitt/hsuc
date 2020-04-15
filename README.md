@@ -62,7 +62,7 @@ plugins: [
 - `removePrevVersion[boolean]` - 是否删除云端以前的版本，默认`false`
 - `log[boolean]` - 是否显示日志，默认`false`
 - `cover[boolean|RegExp]` - 图片、字体文件是否覆盖，默认`false`，填写正则时可以参考`/\.(png|jpe?g|gif|ico|woff2?|svg|ttf|eot)$/`。
-- `custom[js文件]` - 自定义上传文件，可以参照项目中的文件`template.js`文件，能够作为除`aliyun huawei qiniu upyun`之外的扩展或修改。
+- `custom[js文件，例如require("./template.js")]` - 自定义上传文件，可以参照项目中的文件`template.js`文件，能够作为除`aliyun huawei qiniu upyun`之外的扩展或修改。
 
 
 ## 对象存储CORS规则设置
