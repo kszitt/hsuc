@@ -24,7 +24,6 @@ class Hsuc {
       return;
     }
 
-    
     // 初始化
     this.options.cloudFolder = this.options.cloudFolder.replace(/([^/])$/, "$1/");
     this.options.domain = this.options.domain.replace(/([^/])$/, "$1/");
@@ -36,6 +35,7 @@ class Hsuc {
     compiler.plugin('afterEmit', async compilation => {
       this.options.assets = compilation.assets;
       this.uploaded = 0;
+      this.deleted = 0;
 
       this.cloud = new Cloud(this.options);
       if(!this.cloud.CDN){
@@ -48,7 +48,7 @@ class Hsuc {
 
       if(!this.options.removePrevVersion) return;
       await this.remove();
-      console.log("云端上个版本文件清除成功");
+      console.log(this.deleted ? "云端上个版本文件清除成功" : "云端没有要删除的文件");
     });
   }
 
@@ -82,7 +82,7 @@ class Hsuc {
           case file.isFile() && !!assets[folder + file.name]:
             CDNPath = filePath.replace(this.options.path, this.options.cloudFolder.replace(/\/$/, ""));
             result = await this.cloud.uploadFile(filePath, CDNPath, this.options.cover);
-              ++this.uploaded;
+            ++this.uploaded;
             if(result){
               this.message(
                 `上传文件[${this.uploaded}/${Object.keys(assets).length}]：`,
@@ -128,7 +128,8 @@ class Hsuc {
 
         result = await this.cloud.deleteFile(name);
         if(result){
-          this.message(`云端文件删除[${i+1}/${cloudFiles.length}]：`, this.options.domain + name);
+          this.deleted++;
+          this.message(`云端文件删除[${this.deleted}/${cloudFiles.length}]：`, this.options.domain + name);
         }
       }
     } catch(err){
